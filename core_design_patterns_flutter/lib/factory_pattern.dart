@@ -1,25 +1,34 @@
 // simple factory method
-class PaymentApis{
+class PaymentApis {
+  void makePayment() {
+    print("Making payment...");
+  }
 
-factory PaymentApis.PaymentApisFactory(request){
-  return GooglePay();
-}
-void makePayment(){
-  print("Making payment...");
-}
-
-void checkBalance(){
-
-}
+  void checkBalance() {
+    print("checking balance...");
+  }
 }
 
-
-
-
-class GooglePay extends PaymentApis{
-
+class GooglePay extends PaymentApis {
+  @override
+   makePayment() {
+    print("Making payment via GooglePay...");
+  }
 }
 
-class GhPay{
+class GhPay extends PaymentApis {
+  @override
+   makePayment() {
+    print("Making payment via GhPay...");
+  }
+}
 
+class PaymentApisFactory {
+  paymentApisFactory(PaymentApis paymentType) {
+    if (paymentType is GooglePay) {
+      return GooglePay();
+    } else if (paymentType is GhPay) {
+      return GhPay();
+    }
+  }
 }

@@ -1,5 +1,16 @@
-import 'package:core_design_patterns_flutter/core_design_patterns_flutter.dart' as core_design_patterns_flutter;
+import 'package:core_design_patterns_flutter/abstract_factory_pattern.dart';
 
 void main(List<String> arguments) {
-  print('Hello world: ${core_design_patterns_flutter.calculate()}!');
+  // creating a payment object with simple factory method
+  // var paymentApi = PaymentApisFactory();
+  // PaymentApis googlePay = paymentApi.paymentApisFactory(GooglePay());
+  // googlePay.makePayment();
+
+  // creating a payment object with abstract factory pattern
+  var googlePay = GooglePayFactory();
+  var pay = googlePay.makePaymentFactory();
+  pay.makePayment();
+
+
+
 }
